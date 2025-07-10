@@ -1,0 +1,233 @@
+version: '3.1'
+intents:
+- abandon_an_apointment
+- agreement
+- change_an_appointment
+- check_an_appointment
+- chitchat:
+    is_retrieval_intent: true
+    used_entities: []
+- day_off
+- disagreement
+- faq:
+    used_entities: []
+    is_retrieval_intent: true
+- goodbye
+- greet
+- inform
+- late
+- make_an_appointment
+- manager
+- thanks
+entities:
+- button_id:
+    influence_conversation: false
+- phone_number:
+    influence_conversation: false
+- address:
+    influence_conversation: false
+- master:
+    influence_conversation: false
+- time:
+    influence_conversation: false
+slots:
+  button_id:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: button_id
+  time:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: time
+  address:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: address
+  master:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: master
+  user_id:
+    type: text
+    mappings:
+    - type: custom
+  phone_number:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: phone_number
+  have_appointment:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: custom
+responses:
+  utter_chitchat/ask_name:
+  - text: Меня зовут Смарт-бот
+  utter_chitchat/ask_weather:
+  - text: Мне всё равно какая погода.
+  utter_out_of_scope:
+  - text: Не знаю. Спросите что-нибудь другое
+  utter_default:
+  - text: Извините в этом я вам помочь не смогу
+  utter_ask_rephrase:
+  - text: Извините не совсем вас понял. Попробуйте перефразировать
+  utter_need_id:
+  - text: Для работы с расписанием необходимо зарегистрироваться {user_id}
+  utter_goodbye:
+  - text: До свидания!
+  utter_manager:
+  - text: Перевожу на оператора
+  utter_choise_new:
+  - text: На какой день перенести запись?
+  utter_id:
+  - text: Введите номер своего мобильного телефона в формате 9876543210
+  utter_ask_phone_number:
+  - text: Введите номер своего мобильного телефона в формате 9876543210
+  utter_fallback:
+  - text: Я неуверен, что правильно вас понял. Попробуйте спросить иначе
+  utter_ask_master_appointment:
+  - text: К какому мастеру?
+  utter_ask_address_appointment:
+  - text: По какому адресу?
+  utter_ask_time_appointment:
+  - text: На кокой день?
+  utter_submit:
+  - text: |-
+      подтвердить запись
+      мастер {master}
+      филиал {address}
+      время {time}
+    buttons:
+    - title: Да
+      payload: /agreement
+    - title: Нет
+      payload: /disagreement
+  utter_what_else:
+  - text: чем еще могу помочь?
+  utter_what_can_do:
+  - text: чем могу помочь?
+  utter_apointment_abandon:
+  - text: отменить ближайшую запись?
+    buttons:
+    - title: Да
+      payload: /agreement
+    - title: Нет
+      payload: /disagreement
+  utter_appointment_change:
+  - text: изменить запись?
+    buttons:
+    - title: Да
+      payload: /agreement
+    - title: Нет
+      payload: /disagreement
+  utter_appointment_check:
+  - text: |-
+      вы записаны
+      мастер {master}
+      филиал {address}
+      время {time}
+  utter_greet:
+  - text: Добрый день!
+  utter_late:
+  - text: Ждём вас)
+  utter_faq/about_as:
+  - text: Справка о студии и её специалистах
+  utter_faq/about_procedure:
+  - text: 'Справка о опроцедуре: продолжительность, болевые ощущения...'
+  utter_faq/after:
+  - text: Справко о возможных последитвиях и ограничениях
+  utter_faq/contact_and_schedule:
+  - text: 'Справка: расписание, адреса, контакты'
+  utter_faq/credit:
+  - text: справка по рассрочке
+  utter_faq/equipment:
+  - text: Справка по оборудованию
+  utter_faq/preparation:
+  - text: Справка как подготовиться к процедуре
+  utter_faq/price:
+  - text: Полный прайс на услуги
+  utter_faq/restriction:
+  - text: Справка по основным противопоказаниям
+  utter_faq/restriction_antibiotik:
+  - text: Справка по антибиотикам
+  utter_faq/restriction_birthmark:
+  - text: Справка по родинкам
+  utter_faq/restriction_blood:
+  - text: Справка вязкости крови
+  utter_faq/restriction_contraceptive:
+  - text: Справка контрацепция
+  utter_faq/restriction_dermatitis:
+  - text: Справка дерматит
+  utter_faq/restriction_diabetes:
+  - text: Справка диабет
+  utter_faq/restriction_eczema:
+  - text: Справка псориаз экзема
+  utter_faq/restriction_gemor:
+  - text: Справка геморой
+  utter_faq/restriction_inflammation:
+  - text: Справка противовосполительные
+  utter_faq/restriction_lactation:
+  - text: Справка лактация
+  utter_faq/restriction_mastopathy:
+  - text: справка мастопотия
+  utter_faq/restriction_mensal:
+  - text: Справка менструация
+  utter_faq/restriction_operation:
+  - text: Справка после операции
+  utter_faq/restriction_photodermatosis:
+  - text: Справка фотодерматоз
+  utter_faq/restriction_pregnant:
+  - text: Справка беременность
+  utter_faq/restriction_swelling:
+  - text: Справка доброкачественные образования
+  utter_faq/restriction_tan:
+  - text: Справка загар
+  utter_faq/restriction_thyroid:
+  - text: Справка щитовидная железа
+  utter_faq/restriction_vitamin:
+  - text: Справка витамыны
+  utter_faq/restriction_year:
+  - text: Справка возраст
+  utter_faq/result:
+  - text: Справка ожидаемый результат
+  utter_faq/subscription:
+  - text: подарочный сертификат
+  utter_faq/tax:
+  - text: справки для налогового вычета
+session_config:
+  session_expiration_time: 4
+  carry_over_slots_to_new_session: false
+forms:
+  phone_number_form:
+    required_slots:
+    - phone_number
+actions:
+- action_session_start
+- action_appointment_check_choise
+- action_appointment_reset
+- utter_need_id
+- action_phone_number
+- utter_faq
+- action_appointmen_choice
+- action_day_off
+- action_appointment_inset
+- utter_id
+- utter_what_can_do
+- action_appointment_check
+- utter_late
+- action_user_id
+- utter_greet
+- utter_apointment_abandon
+- action_reset_slots
+- action_reset_mem_slots
+- validate_phone_number_form
+- utter_chitchat
