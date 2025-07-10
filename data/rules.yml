@@ -1,0 +1,59 @@
+version: "3.1"
+
+rules:
+
+- rule: Say hi anytime the user says hi
+  # conversation_start: false
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: late
+  steps:
+  - intent: late
+  - action: utter_late
+
+- rule: отклики на FAQ-вопросы
+  steps:
+  - intent: faq                      
+  - action: utter_faq      
+
+- rule: отклики на болтовню
+  steps:
+  - intent: chitchat                      
+  - action: utter_chitchat               
+
+- rule: какие свободные дни
+  steps:
+  - intent: day_off
+  - action: action_day_off
+
+- rule: намерение находится вне рамок знаний бота 
+  steps:
+  - intent: out_of_scope                   
+  - action: utter_out_of_scope 
+
+- rule: когда все намерения имеют достоверность ниже threshold 
+  steps:
+  - intent: nlu_fallback
+  - action: utter_fallback                  
+
+- rule: goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: manager
+  steps:
+  - intent: manager
+  - action: utter_manager
+
+
+- rule: проверить запись
+  condition:
+  - slot_was_set:                           
+    - user_id: 23
+  steps:
+  - intent: check_an_appointment
+  - action: action_appointment_check
+

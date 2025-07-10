@@ -1,0 +1,180 @@
+version: "3.1"
+
+stories:
+
+# ЗАПИСЬ НА ПРИЕМ
+
+
+
+- story: make_appointment_0
+  steps:  
+  - slot_was_set:                     
+    - user_id: 45
+  - intent: make_an_appointment
+  - action: action_appointmen_choice
+  - intent: inform
+    entities:
+    - button_id: '31'
+  - slot_was_set:
+    - button_id: '31'
+  - action: action_appointment_inset
+
+
+- story: make_appointment_0
+  steps:  
+  - intent: make_an_appointment
+  - action: action_appointmen_choice
+  - intent: inform
+    entities:
+    - button_id: '31'
+  - slot_was_set:
+    - button_id: '31'
+  - action: action_appointment_inset
+  - slot_was_set:
+    - address: null
+  - slot_was_set:
+    - master: null
+  - slot_was_set:
+    - time: null
+
+
+# ПРОВЕРКА ЗАПИСИ
+
+# - story: check_an_appointment_0
+#   steps:
+#   - intent: check_an_appointment
+#   - action: action_appointment_check
+
+# - story: check_an_appointment_00
+#   steps:
+#   - slot_was_set:
+#     - user_id: 2
+#   - intent: check_an_appointment
+#   - action: action_appointment_check
+
+# СВОБОДНЫЕ ОКОШКИ
+
+
+# - story: day_off_1
+#   steps:
+#   - intent: day_off
+#     entities:
+#     - address: полковой
+#   - slot_was_set:
+#     - address: полковой
+#   - action: action_day_off
+
+
+# - story: day_off_2
+#   steps:
+#   - intent: day_off
+#     entities:
+#     - master: Юлия
+#   - slot_was_set:
+#     - master: Юлия
+#   - action: action_day_off
+
+
+# ОТМЕНИТЬ ЗАПИСЬ
+
+
+- story: abandon_an_apointment_000
+  steps:
+  - slot_was_set:
+    - user_id: 2
+  - intent: abandon_an_apointment
+  - action: action_appointment_check_choise
+  - intent: inform
+    entities:
+    - button_id: '31'
+  - slot_was_set:
+    - button_id: '31'
+  - action: action_appointment_reset
+
+
+- story: abandon_an_apointment_000
+  steps:
+  - intent: abandon_an_apointment
+  - action: action_appointment_check_choise
+  - intent: inform
+    entities:
+    - button_id: '31'
+  - slot_was_set:
+    - button_id: '31'
+  - action: action_appointment_reset
+
+# ПЕРЕНЕСТИ ЗАПИСЬ
+
+
+# - story: change_an_appointment_00
+#   steps:
+#   - slot_was_set:
+#     - user_id: 2
+#   - intent: change_an_appointment
+#   - action: utter_choise_new
+#   - action: action_appointmen_choice
+#   - intent: inform
+#     entities:
+#     - button_id: '50'
+#   - slot_was_set:
+#     - button_id: '50'
+#   - action: action_appointment_inset
+#   - slot_was_set:
+#     - address: null
+#   - slot_was_set:
+#     - master: null
+#   - slot_was_set:
+#     - time: null
+#   - slot_was_set:
+#     - button_id: null
+#   - action: action_appointment_check_choise
+#   - intent: inform
+#     entities:
+#     - button_id: '31'
+#   - slot_was_set:
+#     - button_id: '31'
+#   - action: action_appointment_reset
+#   - slot_was_set:
+#     - address: null
+#   - slot_was_set:
+#     - master: null
+#   - slot_was_set:
+#     - time: null
+#   - slot_was_set:
+#     - button_id: null
+
+
+# - story: change_an_appointment_00
+#   steps:
+#   - intent: change_an_appointment
+#   - action: utter_choise_new
+#   - action: action_appointmen_choice
+#   - intent: inform
+#     entities:
+#     - button_id: '50'
+#   - slot_was_set:
+#     - button_id: '50'
+#   - action: action_appointment_inset
+#   - slot_was_set:
+#     - address: null
+#   - slot_was_set:
+#     - master: null
+#   - slot_was_set:
+#     - time: null
+#   - slot_was_set:
+#     - button_id: null
+#   - action: action_appointment_check_choise
+#   - intent: inform
+#     entities:
+#     - button_id: '31'
+#   - slot_was_set:
+#     - button_id: '31'
+#   - action: action_appointment_reset
+#   - slot_was_set:
+#     - address: null
+#   - slot_was_set:
+#     - master: null
+#   - slot_was_set:
+#     - time: null
+#   - slot_was_set:
+#     - button_id: null
