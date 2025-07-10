@@ -38,18 +38,23 @@
 
 1. **Настройте Telegram-интеграцию**:  
    - Получите токен вашего Telegram-бота у @BotFather  
-   - Добавьте токен в файл `credentials.yml`  
+   - Добавьте токен в файл `credentials.yml`
+   - Добавьте имя бота в  файл `credentials.yml`
    - Запустите Ngrok  
-   - Укажите полученный URL в файле `credentials.yml`  
+   - Укажите полученный URL в файле `credentials.yml`
+  
+2. **Обучите модель**:
+   ```bash
+   rasa train
 
-2. **Запустите action-сервер**:  
+3. **Запустите action-сервер**:  
    ```bash
    rasa run actions
 
-3. **Запустите Duckling (через Docker)**:
+4. **Запустите Duckling (через Docker)**:
    ```bash
    docker run -d -p 8000:8000 rasa/duckling
-4. **Запустите Rasa API**:
+5. **Запустите Rasa API**:
    ```bash
    rasa run --enable-api --port 8080
    
